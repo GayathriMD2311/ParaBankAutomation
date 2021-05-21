@@ -1,9 +1,9 @@
 package test;
 
-import java.util.concurrent.TimeUnit;
-
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -15,8 +15,8 @@ import pages.TransferFund;
 
 public class AccountsOverviewTest extends Base {
 
-		@BeforeSuite
-		public void openBrowser( ) {
+		@BeforeClass
+		public void initialize( ) {
 			driver = initializeDriver();
 		}
 		
@@ -32,19 +32,15 @@ public class AccountsOverviewTest extends Base {
 		
 		//Validate Accounts Overview
 		@Test
-		public void transferFunds() throws InterruptedException {
-			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			
+		public void accountsOverview() throws InterruptedException {
 			AccountsOverview accountsOverview = new AccountsOverview(driver);
-			boolean value = accountsOverview.();
 			
-			Assert.assertTrue(value, "Fund transfer failed");
-			
+			Assert.assertTrue(accountsOverview.validateAccountActivity("January", "All"));
 		}
 		
-		@AfterSuite
-		public void quit() {
-			quitDriver();
+		@AfterClass
+		public void tearDown() {
+			driver.quit();
 		}
 
 

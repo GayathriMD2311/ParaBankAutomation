@@ -6,13 +6,13 @@
   <parameter name="username" value="gayathri"/>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="test.TransferFundsTest">
+      <class name="test.AccountsOverviewTest">
         <methods>
-          <include name="quit"/>
-          <include name="login" invocation-numbers="0"/>
           <include name="transferFunds"/>
+          <include name="openBrowser"/>
+          <include name="tearDown"/>
         </methods>
-      </class> <!-- test.TransferFundsTest -->
+      </class> <!-- test.AccountsOverviewTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->
